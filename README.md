@@ -13,10 +13,9 @@
  ex) 이 봇은 **jomin398**의 **OpenUtils** 소스를 사용하였습니다.
 ***
 ### Module Lists
->1. Bios Module
->2. BMS Module
->3. Os Module
->>1. Download Module
+>1. BMS
+>2. Os
+>>1. [Download Module](https://github.com/jomin398/Katalk.js-OpenUtils/blob/master/Module/Os/DLM/main.js)(아직작업중입니다)
 ***
 ### 배포용 소스 목록
 
