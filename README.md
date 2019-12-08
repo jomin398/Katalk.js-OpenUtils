@@ -15,7 +15,7 @@
 ### Module Lists
 >1. Bios
 >>1. RTC Module
->>- 자연어2밀리초변환
+>>- [자연어2밀리초변환](https://github.com/jomin398/Katalk.js-OpenUtils/blob/master/Module/Bios/RTC/strTime2Ms.js)
 >>- 밀리초2자연어역변환(작업예정)
 >2. BMS
 >3. Os
