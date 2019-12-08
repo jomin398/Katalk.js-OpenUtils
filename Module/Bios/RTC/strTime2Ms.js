@@ -1,3 +1,6 @@
+var replier = {reply:function(msg){console.log(msg);}};
+//pc면 이코드를 사용하시고 모바일이면 제거하고 사용하세요.
+
 function strTime2Ms(strTime) {
 /*자연어에서 밀리초 구하기*/
 var regex = /동안 ?만|만|까지$/gm;
