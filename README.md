@@ -18,6 +18,8 @@
 >>1. [Download Module](https://github.com/jomin398/Katalk.js-OpenUtils/blob/master/Module/Os/DLM/main.js)(아직작업중입니다)
 ***
 ### 배포용 소스 목록
+#### 시간계산 소스
+- 자연어2밀리초변환
 
 #### 다운로드 모듈
 - 링크 가져오기
