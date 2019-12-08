@@ -13,8 +13,12 @@
  ex) 이 봇은 **jomin398**의 **OpenUtils** 소스를 사용하였습니다.
 ***
 ### Module Lists
->1. BMS
->2. Os
+>1. Bios
+>>1. RTC Module
+>>- 자연어2밀리초변환
+>>- 밀리초2자연어역변환(작업예정)
+>2. BMS
+>3. Os
 >>1. [Download Module](https://github.com/jomin398/Katalk.js-OpenUtils/blob/master/Module/Os/DLM/main.js)(아직작업중입니다)
 ***
 ### 배포용 소스 목록
