@@ -83,9 +83,9 @@ function ReportAttendance(room, sender) {
         return (sender + "님은 출석 기록이 없습니다.");
     } else {
         if (attendance[room][sender].ContinuedAttendanceDayCount != 0) {
-            return (sender + "님 출석하셨습니다.\n" + "최근 출석 일은 " + attendance[room][sender].LastAttendanceDay + "일이며\n" + attendance[room][sender].ContinuedAttendanceDayCount + "일 째 연속 출석 하셨습니다.\n" + "총 출석 일 수는 " + attendance[room][sender].TotalAttendanceDayCount + "일 입니다.\n" + (attendance[room][attendanceinfo].TotalTodayAttendanceNum + 1) + "등으로 출석하셨습니다.");
+            return (sender + "님이 "+getNowTimestring()+"에 출석하셨습니다.\n" + "최근 출석 일은 " + attendance[room][sender].LastAttendanceDay + "일이며\n" + attendance[room][sender].ContinuedAttendanceDayCount + "일 째 연속 출석 하셨습니다.\n" + "총 출석 일 수는 " + attendance[room][sender].TotalAttendanceDayCount + "일 입니다.\n" + (attendance[room][attendanceinfo].TotalTodayAttendanceNum + 1) + "등으로 출석하셨습니다.");
         } else {
-            return (sender + "님이 오늘 첫 출석을 하셨습니다.\n" + "최근 출석 일은 " + attendance[room][sender].LastAttendanceDay + "일이며\n오늘 처음 출석 하셨습니다.\n" + "총 출석 일 수는 " + attendance[room][sender].TotalAttendanceDayCount + "일 입니다.\n" + attendance[room][attendanceinfo].TotalTodayAttendanceNum + "등으로 출석하셨습니다.");
+            return (sender + "님이 "+getNowTimestring()+"에 오늘 첫 출석을 하셨습니다.\n" + "최근 출석 일은 " + attendance[room][sender].LastAttendanceDay + "일이며\n오늘 처음 출석 하셨습니다.\n" + "총 출석 일 수는 " + attendance[room][sender].TotalAttendanceDayCount + "일 입니다.\n" + attendance[room][attendanceinfo].TotalTodayAttendanceNum + "등으로 출석하셨습니다.");
         }
     }
 }
@@ -120,6 +120,10 @@ function GetDiffDay(_date1, _date2) {
 function isNeedReset(_date1, _date2) {
     let diff = GetDiffDay(_date1, _date2);
     return Boolean(diff >= 1);
+}
+
+function getNowTimestring(){
+return day.getHours() + "시 " + day.getMinutes() + "분 " + day.getSeconds() + "초";
 }
 
 function onStartCompile() {
