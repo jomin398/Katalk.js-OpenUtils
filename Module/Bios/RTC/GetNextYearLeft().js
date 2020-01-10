@@ -1,5 +1,5 @@
 const scriptName = "GetNextYearLeft().js";
-function GetNextYearLeft()(_year, _month, _day) {
+function GetNextYearLeft(_year, _month, _day) {
     birth = new Date(_year, _month, _day);
     today = new Date();
     tyear = today.getFullYear();
@@ -21,9 +21,9 @@ function response(room, msg, sender, _, replier) {
         birth = msg.substr(4)
         if (birth.length == 8) {
             birth.replace(/([0-9]{2})/g, x => arr.push(x))
-            if (Number(arr[0] + arr[1]) < 2020) {
+            if (Number(arr[0] + arr[1]) < new Date.getFullYear()) {
                 replier.reply(GetNextYearLeft(Number(arr[0] + arr[1]), Number(arr[2]), Number(arr[3])))
-            } else replier.reply("• 2019년도부터 확인이 가능합니다!")
+            } else replier.reply("• "+(new Date.getFullYear()-1)+"년도부터 확인이 가능합니다!")
         } else replier.reply("• 입력 방식이 잘못되었습니다!\nYYYYMMDD 형식으로 써주세요.")
     }
 }
