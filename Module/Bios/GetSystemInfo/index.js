@@ -18,7 +18,7 @@ module.exports = {
     array[3] = "메모리 전체 용량 : " + SysMemInfo.maxMemory() + " (bytes)";
     array[4] = "디바이스 최대 저장 공간 : " + SysDiskInfo.getTotalSpace() + " (bytes)";
     array[5] = "디바이스 여유 저장 공간 : " + SysDiskInfo.getUsableSpace() + " (bytes)";
-    
+  
     return array.join("\n");
   }
 }
