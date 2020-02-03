@@ -1,6 +1,5 @@
 module.exports = {
-  /*이 소스는 이곳, 게인 카페에 동시에 개시되는 오픈소스입니다.
-  그치만 LGPL을 따르기에 사용시 저작자인 제 이름을 남겨주세요.
+  /*이 소스는 깃헙, 이곳에 동시에 개시되는 오픈소스입니다.
   이소스의 기능은
   Console.log 를 카톡에서 쓸수있도록 했습니다.
   d, e, i 는 체팅방으로 메시지가 전송되지 않습니다.
@@ -10,7 +9,7 @@ module.exports = {
   },
   debug: function(data) {
     if (data === undefined) {
-      throw new ReferenceError('str is undefined\nusage : debug(\"str\")', 'console.module', 11);
+      throw new ReferenceError('str is undefined\nusage : debug(\"str\")', 'Console.module', 7);
     }
     if (typeof data !== "string") {
       data = data.toString()
@@ -28,7 +27,7 @@ module.exports = {
   dirxml(value: any): void;*/
   error: function(data) {
     if (data === undefined) {
-      throw new ReferenceError('str is undefined\nusage : error(\"str\")', 'console.module', 29);
+      throw new ReferenceError('str is undefined\nusage : error(\"str\")', 'Console.module', 28);
     }
     try {
       throw Log.e(data);
@@ -45,7 +44,7 @@ module.exports = {
     groupEnd(): void;*/
   info: function(data) {
     if (data === undefined) {
-      throw new ReferenceError('str is undefined\nusage : info(\"str\")', 'console.module', 46);
+      throw new ReferenceError('str is undefined\nusage : info(\"str\")', 'Console.module', 45);
     }
     try {
       throw Log.i(data);
@@ -58,7 +57,7 @@ module.exports = {
   },
   log: function(data) {
     if (data === undefined) {
-      throw new ReferenceError('str is undefined\nusage : log(\"str\")', 'console.module', 59);
+      throw new ReferenceError('str is undefined\nusage : log(\"str\")', 'Console.module', 58);
     }
     if (typeof data !== "string") {
       data = data.toString()
@@ -70,15 +69,4 @@ module.exports = {
       return error;
     }
   }
-  /*markTimeline(label?: string): void;
-  profile(reportName?: string): void;
-  profileEnd(reportName?: string): void;
-  table(...tabularData: any[]): void;
-  time(label?: string): void;
-  timeEnd(label?: string): void;
-  timeStamp(label?: string): void;
-  timeline(label?: string): void;
-  timelineEnd(label?: string): void;
-  trace(message?: any, ...optionalParams: any[]): void;
-  warn(message?: any, ...optionalParams: any[]): void;*/
 }
