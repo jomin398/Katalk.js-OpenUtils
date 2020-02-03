@@ -1,14 +1,15 @@
 module.exports = {
-      "log": {
-        /*memory: any;
-        assert(condition?: boolean, message?: string, ...data: any[]): void;*/
+        /*이 소스는 이곳, 게인 카페에 동시에 개시되는 오픈소스입니다.
+        그치만 LGPL을 따르기에 사용시 저작자인 제 이름을 남겨주세요.
+        이소스의 기능은
+        Console.log 를 카톡에서 쓸수있도록 했습니다.
+        by jomin398 */
         clear: function() {
           Log.clear()
         },
-        /*count(label?: string): void;*/
         debug: function(data) {
           if (data === undefined) {
-            throw new ReferenceError('str is undefined\nusage : log.d(\"str\")', 'console.log.module', 9);
+            throw new ReferenceError('str is undefined\nusage : debug(\"str\")', 'console.module', 10);
           }
           if (typeof data !== "string") {
             data = data.toString()
@@ -27,7 +28,7 @@ module.exports = {
         dirxml(value: any): void;*/
         error: function(data) {
           if (data === undefined) {
-            throw new ReferenceError('str is undefined\nusage : log.e(\"str\")', 'console.log.module', 28);
+            throw new ReferenceError('str is undefined\nusage : error(\"str\")', 'console.module', 29);
           }
           try {
             return data;
@@ -45,7 +46,7 @@ module.exports = {
           groupEnd(): void;*/
         info: function(data) {
           if (data === undefined) {
-            throw new ReferenceError('str is undefined\nusage : log.i(\"str\")', 'console.log.module', 46);
+            throw new ReferenceError('str is undefined\nusage : info(\"str\")', 'console.module', 47);
           }
           try {
             return data;
@@ -57,7 +58,19 @@ module.exports = {
         i: function(data) {
           return this.info(data)
         },
-      }
+        log: function(data) {
+          if (data === undefined) {
+            throw new ReferenceError('str is undefined\nusage : log(\"str\")', 'console.module', 61);
+          }
+          if (typeof data !== "string") {
+            data = data.toString()
+          }
+          try {
+            return data;
+          } catch (error) {
+            return error;
+          }
+        }
       /*markTimeline(label?: string): void;
       profile(reportName?: string): void;
       profileEnd(reportName?: string): void;
