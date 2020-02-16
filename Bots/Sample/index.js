@@ -1,5 +1,5 @@
 const scriptName = "V.A";
-/*최종 저작자 jomin398, All rights reserved.*/
+/*최종 저작자 jomin398, 호석이, All rights reserved.*/
 /* 절대관리자 지정, 봇제작자들*/
 const RMaster = ["Dr JMH (jomin398)","호석이"];
 /* 고인물이 아닌이상 하단부터는 고정해주세요 */
