@@ -1,12 +1,14 @@
 const scriptName = "V.A";
 /*최종 저작자 jomin398, 호석이, All rights reserved.*/
 /* 절대관리자 지정, 봇제작자들*/
-const RMaster = ["Dr JMH (jomin398)", "호석이"];
+const RMaster = ["DEBUG SENDER","Dr JMH (jomin398)", "호석이"];
 /* 고인물이 아닌이상 하단부터는 고정해주세요 */
 /* 저장경로 최상위 가져오기 */
 const sdcard = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+const baseDir = sdcard+"/"+scriptName;
 const COMPRESS = "\u200b".repeat(500);
 const botOn = {}; //봇 on/off 관련 객체
+const AiOn = {};
 const preChat = {}; //도배 방지 구현용
 Array.prototype.ranPick = function() {
     let len = this.length
@@ -14,11 +16,10 @@ Array.prototype.ranPick = function() {
     return this[ran]
 }
 try {
-    var Ai = require("AutoChat").Chatprocess;
-    Ai(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId, roomList, scriptName);
+    var Auto = require("AutoChat");
 } catch (e) {
-    Log.d(e + " " + e.lineNumber + "\n\nAi 모듈에러");
-    throw new InternalError("Ai 모듈에러" + e, "AutoChat_Module", e.lineNumber)
+    Log.d("Ai 모듈에러\n\n"+e + " " + e.lineNumber);
+    throw new InternalError("Ai 모듈에러\n\n"+ e, "AutoChat_Module", e.lineNumber)
 }
 function toast(msg, tf) {
     try{
@@ -32,25 +33,27 @@ function toast(msg, tf) {
     }
 };
 /*고인물이 아닌이상 이 위 까지 함부로 지우지 말것*/
-const Roomlist = ["DEBUG ROOM", "호석이", "GAME"];
+const roomList = ["DEBUG ROOM", "호석이", "GAME"];
 
-function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-    if (Roomlist.indexOf(room) != -1) {
+function response(room, msg, sender, isGroupChat, replier, imageDB, packageName, threadId) {
+    if (roomList.indexOf(room) != -1) {
         if (preChat[room] == msg) return; //동일한 채팅이 두 번 이상 연속으로 수신되면, 가볍게 무시
         /*명령어 처리*/
         procCmd(room, msg, sender, replier);
         /*봇 on/off 설정*/
         if (botOn[room] == undefined) { // 해당 채팅방의 on/off 여부가 결정되어있지 않으면 on으로 설정
-            botOn[room] = true;
+            botOn[room] = false;
         };
         if (botOn[room] == false) { //봇이 꺼진 경우 작동 X
             return;
         };
         try {
-            Ai(room, msg, sender, isGroupChat, replier, ImageDB, packageName, threadId, Roomlist, scriptName);
+        	if(botOn[room] !== undefined&botOn[room] == true){
+            Auto.Chatprocess(room, msg, sender, isGroupChat, replier, imageDB, packageName, threadId, roomList, scriptName);
+            }
         } catch (e) {
-            Log.d(e + " " + e.lineNumber + "\n\nAi 모듈에러");
-            replier.reply(e + " " + e.lineNumber + "\n\nAi 모듈에러");
+            Log.d("Ai 모듈에러\n\n"+e + " " + e.lineNumber);
+            replier.reply("Ai 모듈에러\n\n"+e + " " + e.lineNumber);
         }
         if (/(안녕|ㅎㅇ)+(하(세요|십니까))?[\?|\!\.]?/.test(msg)) {
             Math.random()
@@ -98,27 +101,28 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 /*관리자 명령어 처리*/
 function procCmd(room, msg, sender, replier) {
     /*봇 키는 명령어*/
-    if (RMaster.indexOf(sender) != -1 && msg.split(" ")[0] == "봇") {
+    if (RMaster.indexOf(sender) != -1 && /\/(봇|bot)/g.test(msg.split(" ")[0])) {
         if (/일어나|\/?on/.test(msg)) {
             //봇을 키는 명령어는 꺼진 상테에서도 작동
             replier.reply("띠리링 켜졌습니다." + sender + " 님!");
             Log.i("\u300E" + scriptName + "\u300F 가\u300E" + sender + "\u300F님으로 인해 " + room + "에서 켜짐")
             botOn[room] = true;
-        } else if (/잘자요?|\/?off/.test(msg)) {
+        }
+if (/잘자요?|\/?off/.test(msg)) {
             //봇을 키는 명령어는 꺼진 상테에서도 작동
             replier.reply("띠리리 꺼졌습니다." + sender + " 님!");
             Log.i("\u300E" + scriptName + "\u300F 가\u300E" + sender + "\u300F님으로 인해 " + room + "에서 꺼짐")
             botOn[room] = false;
         }
-    }
-    if (RMaster.indexOf(sender) != -1 && msg=="/DB"){
-            var data = DB.readData(room);
+        if (msg.split(" ")[1] == "/DB"){
+            var data = Auto.DB.readData(baseDir, room);
             if (data == null){
-                Ai.say("0개입니다.", r)
+                Auto.Ai.say("0개입니다.", replier)
             }else{
-                Ai.say(data.split("\n").length + "개입니다.", r);
+                Auto.Ai.say(data.split("\n").length + "개입니다.", replier);
             }
         }
+    }
     if (botOn[room] == false) { //봇이 꺼진 경우 작동 X
         return;
     }

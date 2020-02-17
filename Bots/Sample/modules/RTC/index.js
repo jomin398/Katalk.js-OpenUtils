@@ -80,7 +80,7 @@ module.exports = {
             */
             try {
                 var result = java.text.SimpleDateFormat(presets).format(new Date());
-                var apm = (new Date().getHours() >= 12)? '오후' : '오전';
+                var apm = (new Date().getHours() >= 13)? '오후' : '오전';
                 if(/오전|오후/.test(presets)){
                 result = result.replace(/오전|오후/g,apm)
                 }
