@@ -43,7 +43,7 @@ module.exports={
                 for (var n = 0; n < invalids.length; n++) {
                     if (msg.charAt(0) == invalids[n]) return false; //특정 문자로 시작하는 것은 학습 X.    
                 }
-                var noStudy = ["\n", "//"]; //엔터가 포함된건 학습 X. 비속어 필터링 등도 여기다가 넣으면 이상한 말은 안배움
+                var noStudy = ["\n", "//",".", "사진", "동영상", "음성메시지", "카카오톡 프로필", "(이모티콘)"]; //엔터가 포함된건 학습 X. 비속어 필터링 등도 여기다가 넣으면 이상한 말은 안배움
                 for (var n = 0; n < noStudy.length; n++) {
                     if (msg.indexOf(noStudy[n]) != -1) return false;
                 }
