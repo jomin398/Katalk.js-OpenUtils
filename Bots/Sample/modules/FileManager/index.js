@@ -1,5 +1,5 @@
 module.exports = {
-    sdcard : "",
+    sdcard : android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),
     isModuleInstalled: function(FolderUrl) {
         if (FolderUrl !== undefined) {
             if (typeof FolderUrl === "string") {

@@ -1,7 +1,7 @@
 module.exports={
-	DB:require("DB"),
+	DB:require("FileManager"),
     Ai:{
-    	DB:require("DB"),
+    	DB:require("FileManager"),
         checkWord: function(que, msg) { //적당히 비슷한 말인지 비교
             var data = msg.split(" "); //수신된 채팅을 어절 단위로 나눔
             var count = 0;
