@@ -1,18 +1,18 @@
 const scriptName = "인증 봇";
 const COMPRESS = "\u200b".repeat(500);
-const RMaster = ["DEBUG SENDER", "Dr JMH (jomin398)", "호석이"];
+const RMaster = ["DEBUG SENDER"];
 var CmdLocked = {};
 var Lock = null;
 var preRoomName = null;
 var 클립보드 = Api.getContext().getSystemService(Api.getContext().CLIPBOARD_SERVICE);
 /* 유저설정
 아래에 봇 주인의 본명을 적어주세요.
-예시 : var personalRoomName = "7KGw66+87ZiB";
+예시 : var personalRoomName = "";
 예시와 아래가 같은형식이야됩니다.
 이 변수는 봇 주인의 카톡방 이름을 지정하며
 인증이 시도될경우 알림이 발송됩니다.
 */
-var MasterRoomName = "7KGw66+87ZiB";
+var MasterRoomName = "";
 /* 위에다 봇 주인의 본명을 Base 64코드로 인코딩해서 적어주세요.
 site : https://www.base64encode.org
 아래부터는 디버그 모드 설정입니다.
