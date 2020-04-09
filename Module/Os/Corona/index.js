@@ -124,4 +124,15 @@ module.export = {
             GrfTotalTestNegativeRate: GrfTotalTestNegativeRate
         }
     },
+    getCoronaText:function(){
+        var result = null;
+        var RTC = null;
+        try {
+            var RTC = require("Bios/RTC");
+        } catch (e) {
+            Log.d("RTC 모듈로드에러\n\n" + e + " " + e.lineNumber);
+            throw new InternalError("RTC 모듈로드에러\n\n" + e, "RTC Load Module", e.lineNumber);
+        }
+        var today = RTC.day;
+    }
 }
