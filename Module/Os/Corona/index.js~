@@ -36,7 +36,7 @@ module.exports = {
             preselect1 + "ul > li:nth-child(1) > span.data1",
             preselect1 + "ul > li:nth-child(2) > span.data2",
             /*실시간 집계현황*/
-            preselect1 + "div > ul > li:nth-child(1) > span.num",
+            preselect1 + "div > ul > li:nth-child(1) > span.num > span",
             preselect1 + "div > ul > li:nth-child(1) > span.before",
             preselect1 + "div > ul > li:nth-child(2) > span.num",
             preselect1 + "div > ul > li:nth-child(2) > span.before",
@@ -66,21 +66,21 @@ module.exports = {
         let DayReleased = this.getRawDB(url, selects[2]);
         /*실시간 집계현황*/
         //확진자
-        let LiveConfirmed = (this.getRawDB(url, selects[3])).replace(/[^0-9\,]/g,"");
+        let LiveConfirmed = this.getRawDB(url, selects[3]);
         //전날대비확진자
-        let LiveConfirmedDff = (this.getRawDB(url, selects[4])).replace(/[가-힣\(\)]/g,"").trim();
+        let LiveConfirmedDff = this.getRawDB(url, selects[4]);
         //완치자
         let LiveReleased = this.getRawDB(url, selects[5]);
         //전날대비완치자
-        let LiveReleasedDff = (this.getRawDB(url, selects[6])).replace(/[가-힣\(\)]/g,"").trim();
+        let LiveReleasedDff = this.getRawDB(url, selects[6]);
         //치료중(격리중)
         let LiveIsolated = this.getRawDB(url, selects[7]);
         //전날대비치료중(격리중)인원
-        let LiveIsolatedDff = (this.getRawDB(url, selects[8])).replace(/[가-힣\(\)]/g,"").trim();
+        let LiveIsolatedDff = this.getRawDB(url, selects[8]);
         //사망자
         let LiveDead = this.getRawDB(url, selects[9]);
         //전날대비사망자
-        let LiveDeadDff = (this.getRawDB(url, selects[10])).replace(/[가-힣\(\)]/g,"").trim();
+        let LiveDeadDff = this.getRawDB(url, selects[10]);
         /*누적 검사수*/
         //검사수
         let TotalTestsPerformed = this.getRawDB(url, selects[11]);
@@ -126,15 +126,4 @@ module.exports = {
             GrfTotalTestNegativeRate: GrfTotalTestNegativeRate
         }
     },
-    getCoronaText:function(){
-        var result = null;
-        var RTC = null;
-        try {
-            var RTC = require("Bios/RTC");
-        } catch (e) {
-            Log.d("RTC 모듈로드에러\n\n" + e + " " + e.lineNumber);
-            throw new InternalError("RTC 모듈로드에러\n\n" + e, "RTC Load Module", e.lineNumber);
-        }
-        var today = RTC.day;
-    }
 }

@@ -200,15 +200,12 @@ module.exports = {
         //  -------------------------------------------------------------------  //
         //  시간
         var hourtext = '00';
-        if (oDiff.hours > 0) {
-            hourtext = String(oDiff.hours);
+        if (oDiff.days > 0) {
+            hourtext = String(oDiff.days);
         }
         if (hourtext.length == 1) {
             hourtext = '0' + hourtext
         };
-        if (oDiff.days > 0) {
-            hourtext = String(oDiff.hours+(oDiff.days*24));
-        }
         //  분
         var mintext = '00';
         if (oDiff.minutes > 0) {
