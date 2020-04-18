@@ -13,6 +13,7 @@ function getVisualName(packageName) {
    * @param String packageName 어플의 패키지명.
    * @return String system App || Name
    * @author jomin398
+   * @see 안드로이드 패키지 메니져 : https://developer.android.com/reference/android/content/pm/PackageManager
    */
   var ctx = Api.getContext();
   let pkgm = ctx.getPackageManager();
