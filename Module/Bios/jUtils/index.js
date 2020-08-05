@@ -52,4 +52,21 @@ modules.exports = {
          */
         return Boolean(this.sysLang.get() == "ko");
     },
+    memoryIfo:function(){
+        var SMI = java.lang.Runtime.getRuntime();
+        var a = [];
+        a.push("기기에는 " +SMI.availableProcessors() + " 개의 코어가 장착되어있습니다.");
+        a.push("메모리 여유 가용량 : " +SMI.freeMemory() + " (bytes)");
+        a.push("메모리 사용량 : " +SMI.totalMemory() + " (bytes)");
+        a.push("메모리 전체 용량 : " +SMI.maxMemory() + " (bytes)");
+    return a;
+    },
+    diskIfo:function(){
+        var SysDiskInfo = java.io.File.listRoots()[0];
+        var a = [];
+        a.push("디바이스 최대 저장 공간 : " + SysDiskInfo.getTotalSpace() + " (bytes)");
+        a.push("디바이스 여유 저장 공간 : " + SysDiskInfo.getFreeSpace());
+        a.push("디바이스 가용 저장 공간 : " + SysDiskInfo.getUsableSpace() + " (bytes)");
+        return a;
+    }
 }
