@@ -2,6 +2,16 @@ modules.exports = {
     errorMsg: {
         10: "환경이 올바르지 않습니다."
     },
+    B64:{
+        Encode: function(str){
+            //base 64로 인코딩
+            return android.util.Base64.encodeToString(java.lang.String(str).getBytes("UTF-8"),android.util.Base64.DEFAULT).trim();
+        },
+        Decode: function(str){
+            //base64 디코딩, 해독
+            return java.lang.String(android.util.Base64.decode(str, android.util.Base64.DEFAULT), "UTF-8");
+        }
+    },
     sysLang: {
         /**
          * @this {sysLang} 시스탬 언어 관련객체
@@ -59,14 +69,14 @@ modules.exports = {
         a.push("메모리 여유 가용량 : " +SMI.freeMemory() + " (bytes)");
         a.push("메모리 사용량 : " +SMI.totalMemory() + " (bytes)");
         a.push("메모리 전체 용량 : " +SMI.maxMemory() + " (bytes)");
-    return a;
+        return a;
     },
     diskIfo:function(){
-        var SysDiskInfo = java.io.File.listRoots()[0];
+        var SDI = java.io.File.listRoots()[0];
         var a = [];
-        a.push("디바이스 최대 저장 공간 : " + SysDiskInfo.getTotalSpace() + " (bytes)");
-        a.push("디바이스 여유 저장 공간 : " + SysDiskInfo.getFreeSpace());
-        a.push("디바이스 가용 저장 공간 : " + SysDiskInfo.getUsableSpace() + " (bytes)");
+        a.push("디바이스 최대 저장 공간 : " + SDI.getTotalSpace() + " (bytes)");
+        a.push("디바이스 여유 저장 공간 : " + SDI.getFreeSpace());
+        a.push("디바이스 가용 저장 공간 : " + SDI.getUsableSpace() + " (bytes)");
         return a;
     }
 }
