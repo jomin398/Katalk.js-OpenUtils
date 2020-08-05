@@ -1,5 +1,7 @@
 # Katalk.js-OpenUtils
-© 2019 jomin398, All rights reserved.
+- Katalk OpenUtils for Everyoe
+- Organized with [KakaoTalkBotOrganization Group](https://github.com/KakaoTalkBotOrganization)
+- ©2019 ~ jomin398, All rights reserved.
 ***
 ### 개요
  - 카톡 AI 연구자들을 위한 js 오픈소스.
